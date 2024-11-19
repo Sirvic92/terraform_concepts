@@ -44,12 +44,8 @@ resource "aws_security_group" "terraform_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    "Name"           = "terraform-sg"
-    "owner"          = "Victor Orji"
-    "environment"    = "dev"
-    "project"        = "del"
-    "created_by"     = "Terraform"
-    "Cloud_provider" = "aws"
-  }
+  tags = merge(var.tags, {
+    Name = format("%s-%s-sg", var.tags["environment"], var.tags["project"])
+
+  })
 }

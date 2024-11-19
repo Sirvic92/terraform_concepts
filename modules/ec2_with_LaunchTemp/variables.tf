@@ -28,8 +28,5 @@ variable "tags" {
 
 }
 
-variable "security_group_id" {
-  type = string
-  
-}
+
 
