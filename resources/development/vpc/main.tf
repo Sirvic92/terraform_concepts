@@ -33,11 +33,11 @@ locals {
 
 terraform {
   backend "s3" {
-    bucket         = "dev-learning-victor-s3-backend-us-east-1" # Replace with the bucket name you created
-    key            = "vpc/terraform.tfstate"                    # Path to your state file
-    region         = "us-east-1"                                # Replace with the region
+    bucket         = "dev-learning-victor-s3-backend-us-east-1" 
+    key            = "vpc/terraform.tfstate"                    
+    region         = "us-east-1"                                
     encrypt        = true
-    dynamodb_table = "dev-learning-victor-dynamodb-backend-us-east-1" # Replace with the table name you created
+    dynamodb_table = "dev-learning-victor-dynamodb-backend-us-east-1" 
   }
 }
 
@@ -47,7 +47,7 @@ module "vpc" {
   aws_region         = local.aws_region
   cidr_block         = local.cidr_block
   no_public_subnets  = local.no_public_subnets
-  no_private_subnets = local.no_private_subnets # Corrected the variable name here
+  no_private_subnets = local.no_private_subnets 
   subnet_bits        = local.subnet_bits
   number_of_nat      = local.number_of_nat
   tags               = local.tags
