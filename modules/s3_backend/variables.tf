@@ -1,16 +1,10 @@
-variable "bucket_name" {
-  description = "Name of the S3 bucket to store Terraform state"
-  type        = string
-}
-
-variable "dynamodb_table_name" {
-  description = "Name of the DynamoDB table for state locking"
-  type        = string
-  default     = "terraform-state-locks"
-}
-
 variable "enable_locking" {
   description = "Enable DynamoDB for state locking"
+  type        = bool
+}
+
+variable "force_destroy" {
+  description = "decides if the resource should be deleted or not"
   type        = bool
 }
 

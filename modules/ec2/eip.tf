@@ -3,7 +3,6 @@ resource "aws_eip" "my_elastic_ip" {
   vpc = true
   tags = merge(var.tags, {
     "Name"     = "elastic_ip"
-    "freestle" = "just_checking"
 
   })
 

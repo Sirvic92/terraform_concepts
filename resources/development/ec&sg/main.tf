@@ -21,15 +21,23 @@ locals {
   aws_region    = "eu-central-1"
   sg_resource_name ="terraform_sg-apache"
   tags = {
-    "Name"           = "elastic_ip"
+   
     "owner"          = "Victor Orji"
     "environment"    = "dev"
     "project"        = "del"
     "created_by"     = "Terraform"
     "Cloud_provider" = "aws"
   }
-
-
+   
+}
+terraform {
+  backend "s3" {
+    bucket         = "victor-terraform-state-bucket"  # Replace with the bucket name you created
+    key            = "jenkins-master/terraform.tfstate"   # Path to your state file
+    region         =  "us-east-1"           # Replace with the region
+    encrypt        = true
+    dynamodb_table = "TerraformStateFile"  # Replace with the table name you created
+  }
 }
 
 module "security_group" {

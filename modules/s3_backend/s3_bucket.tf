@@ -1,16 +1,13 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = var.bucket_name
+  bucket = format("%s-%s-%s-s3-backend-%s", var.tags["environment"], var.tags["project"], var.tags["owner"], var.aws_region)
+  force_destroy = var.force_destroy 
+
 
   lifecycle {
     prevent_destroy = false
   }
 
-  tags = merge(
-    var.tags,
-    {
-      Name = format("%s-%s-%s", var.tags["environment"], var.tags["project"], var.bucket_name)
-    }
-  )
+  tags = var.tags
 }
 
 # resource "aws_s3_bucket_acl" "terraform_state" {
