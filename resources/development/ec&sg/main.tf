@@ -15,10 +15,10 @@ terraform {
 locals {
   root_volume   = 10
   instance_type = "t2.micro"
-  key_name      = "ok"
+  key_name      = "window-pair"
   resource_type = "apache-14"
   inbound_ports = [22, 80, 2000, 2001]  
-  aws_region    = "eu-central-1"
+  aws_region    = "us-east-1"
   sg_resource_name ="terraform_sg-apache"
   tags = {
    
@@ -32,11 +32,11 @@ locals {
 }
 terraform {
   backend "s3" {
-    bucket         = "victor-terraform-state-bucket"  # Replace with the bucket name you created
+    bucket         = "dev-learning-victor-s3-backend-us-east-1"  # Replace with the bucket name you created
     key            = "jenkins-master/terraform.tfstate"   # Path to your state file
     region         =  "us-east-1"           # Replace with the region
     encrypt        = true
-    dynamodb_table = "TerraformStateFile"  # Replace with the table name you created
+    dynamodb_table = "dev-learning-victor-dynamodb-backend-us-east-1"  # Replace with the table name you created
   }
 }
 

@@ -2,7 +2,7 @@
 resource "aws_security_group" "terraform_sg" {
   name        = var.sg_resource_name
   description = "Allow inbound traffic for specified ports"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = var.vpc_id
 
   # Iterate through the variable for inbound ports
   dynamic "ingress" {

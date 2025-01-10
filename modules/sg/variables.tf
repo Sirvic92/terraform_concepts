@@ -19,3 +19,8 @@ variable "sg_resource_name" {
 
 
 }
+
+variable "vpc_id" {
+  description = "VPC ID where the security group will be created"
+  type        = string
+}
